@@ -25,13 +25,33 @@ while True:
             purchase_price = float(purchase_price)
             break
 
-# Calculations
-quarter = int(purchase_price//quarters)
-dime = int(purchase_price%quarters//dimes)
-penny = int(round(purchase_price%quarters%dimes/pennies))
+# Assign Variables
+customer_pay = 1
+quarters = .25
+dimes = .10
+nickels = .05
+pennies = .01
+names = ['Quarters', 'Dimes', 'Nickels', 'Pennies']
+
+# Ensure user inputs a decimal form 0-1
+while True:
+    purchase_price = input('What is the purchase price?: (Must be greater than $0 and less than $1)')
+    if not purchase_price.isalpha():
+        if float(purchase_price) > 0 and float(purchase_price)<=1:
+            purchase_price = float(purchase_price)
+            break
+
+# Calculations (1 - input for change)
+quarter = int((1-purchase_price) // quarters)
+dime = int((1-purchase_price) % quarters // dimes)
+nickel = int((1-purchase_price) % quarters % dimes // nickels)
+penny = int(round((1-purchase_price) % quarters % dimes % nickels / pennies))
+result = [quarter, dime, nickel, penny]
 
 # Print results
-print(f'You have inputed {purchase_price}, your change is:')
-print(f'{quarter} Quarters')
-print(f'{dime} Dimes')
-print(f'{penny} Pennies')
+print(f'You have entered: ${purchase_price:.2f}\nYour change is ${1-purchase_price:.2f}')
+loc = 0
+for calc in result:
+    if calc != 0:
+        print(calc, names[loc])
+    loc += 1
