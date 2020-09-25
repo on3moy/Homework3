@@ -9,6 +9,7 @@ After processing all input information, the script should calculate and display 
 
 # Modifier to stop while loop once user is done inputting all information
 continue_input = True
+
 # Assign variables empty lists
 total_miles = []
 total_gallons = []
@@ -33,23 +34,22 @@ while continue_input:
                         # Adds gallons to total_gallons
                         total_gallons.append(int(gallons))
                         # Calculates MPG and adds to mpg list
-                        mpg.append(int(miles)/int(gallons))
-                        print(f'MPG Usage: {int(miles)/int(gallons):.2f}')
-
-                        # Ensures user input is either y or n
-                        while True:
-                            input_more = input('Would you like to add more miles and gallons?: (Y or N)')
-                            if input_more.lower() == 'y':
-                                break
-                            elif input_more.lower() == 'n':
-                                # If user does not want to continue, stops while loop for continued input
-                                continue_input = False
-                                break
-                            
-                        # Breaks out of gallon while loop
+                        mpg.append(int(miles) / int(gallons))
+                        print(f'MPG Usage: {int(miles) / int(gallons):.2f}')
                         break
 
-print('Total Results Below: \n')
-print(f'Total Miles Driven: {sum(total_miles):,}')
-print(f'Total Gallons Used: {sum(total_gallons):,}')
-print(f'Average MPG: {sum(mpg)/len(mpg):.2f}')
+            # Ensures user input is either y or n
+            while True:
+                input_more = input('Would you like to add more miles and gallons?: (Y or N)')
+                if input_more.lower() == 'y':
+                    break
+                elif input_more.lower() == 'n':
+                    # If user does not want to continue, stops while loop for continued input
+                    continue_input = False
+                    break
+# Prints Results
+print('\n')
+print('Total Results: ')
+print(f'\tTotal Miles Driven: {sum(total_miles):,}')
+print(f'\tTotal Gallons Used: {sum(total_gallons):,}')
+print(f'\tAverage MPG: {sum(mpg) / len(mpg):.2f}')
