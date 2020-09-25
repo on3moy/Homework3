@@ -28,9 +28,9 @@ while True:
 
 # Calculations (1 - input for change)
 quarter = int((1-purchase_price) // quarters)
-dime = int((1-purchase_price) % quarters // dimes)
-nickel = int((1-purchase_price) % quarters % dimes // nickels)
-penny = int(round((1-purchase_price) % quarters % dimes % nickels / pennies))
+dime = int(round((1-purchase_price) % quarters,2)//dimes)
+nickel = int(round(round((1-purchase_price) % quarters,2) % dimes,2) // nickels)
+penny = int(round(round(round((1-purchase_price) % quarters,2) % dimes,2) % nickels,2) / pennies)
 result = [quarter, dime, nickel, penny]
 
 # Print results
